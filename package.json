@@ -1,9 +1,10 @@
 {
-  "name": "help-extension",
-  "version": "0.1.0",
-  "description": "My Chrome Extension",
+  "name": "exam-help-extension",
+  "version": "1.0.0",
+  "description": "Exam Helper Chrome Extension",
   "private": true,
   "scripts": {
+    "start": "npm run watch",
     "watch": "webpack --mode=development --watch --config config/webpack.config.js",
     "build": "webpack --mode=production --config config/webpack.config.js"
   },
@@ -16,5 +17,8 @@
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12",
     "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "@types/chrome": "^0.0.148"
   }
 }

@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 // Content script file will run in the context of web page.
 // With content script you can manipulate the web pages using
@@ -12,32 +12,40 @@
 // See https://developer.chrome.com/extensions/content_scripts
 
 // Log `title` of current active web page
-const pageTitle = document.head.getElementsByTagName('title')[0].innerHTML;
-console.log(
-  `Page title is: '${pageTitle}' - evaluated by Chrome extension's 'contentScript.js' file`
-);
+import { statusStorage } from './lib/status.js'
 
-// Communicate with background file by sending a message
-chrome.runtime.sendMessage(
-  {
-    type: 'GREETINGS',
-    payload: {
-      message: 'Hello, my name is Con. I am from ContentScript.',
-    },
-  },
-  response => {
-    console.log(response.message);
+const pageTitle = document.head
+  .getElementsByTagName('title')[0]
+  .innerText.trim()
+const pageHost = document.location.host
+
+console.log(`**Current page**: ${pageTitle}\n**Current host**: ${pageHost}`)
+
+const keyListener = async event => {
+  if (event.code == 'KeyZ') {
+    console.log('Делаем скриншот')
+    chrome.runtime.sendMessage({ type: 'CAPTURE', pageTitle, pageHost })
   }
-);
+}
 
-// Listen for message
+statusStorage.get(status => {
+  if (status === 'START') {
+    document.addEventListener('keydown', keyListener)
+  }
+})
+
+// // Listen for message
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.type === 'COUNT') {
-    console.log(`Current count is ${request.payload.count}`);
+  if (request.type === 'START') {
+    document.addEventListener('keydown', keyListener)
+  }
+
+  if (request.type === 'STOP') {
+    document.removeEventListener('keydown', keyListener)
   }
 
   // Send an empty response
   // See https://github.com/mozilla/webextension-polyfill/issues/130#issuecomment-531531890
-  sendResponse({});
-  return true;
-});
+  sendResponse({})
+  return true
+})
