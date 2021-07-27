@@ -8,7 +8,7 @@ You will receive answers from your smart watch or phone, this extension does not
 
 ## Example
 
-![Gif explanation](https://i.imgur.com/Z6pvVNf.gif)
+![Gif explanation](https://github.com/whoisYeshua/hard-assets-gif/blob/master/help_extension.gif)
 
 ## Features
 
