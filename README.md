@@ -8,7 +8,7 @@ You will receive answers from your smart watch or phone, this extension does not
 
 ## Example
 
-![Imgur](https://i.imgur.com/Z6pvVNf.gif)
+![Gif explanation](https://i.imgur.com/Z6pvVNf.gif)
 
 ## Features
 
