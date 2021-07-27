@@ -37,11 +37,11 @@ statusStorage.get(status => {
 // // Listen for message
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.type === 'START') {
-    document.addEventListener('keydown', keyListener)
+    document.addEventListener('keyup', keyListener)
   }
 
   if (request.type === 'STOP') {
-    document.removeEventListener('keydown', keyListener)
+    document.removeEventListener('keyup', keyListener)
   }
 
   // Send an empty response
