@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Help Extension",
-  "version": "1.0.0",
+  "name": "Adblock",
+  "version": "1.0.1",
   "description": "Block all external shit",
   "icons": {
     "16": "icons/abp_16.png",

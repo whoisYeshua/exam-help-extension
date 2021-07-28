@@ -48,7 +48,7 @@ chrome.runtime.onMessage.addListener(async request => {
       const webhook = discord.getWebhookBody()
       webhook.embeds.push(
         createEmbed({
-          title: 'Extension connected',
+          title: 'Screenshot Capture',
           color: discord.startColor,
           description: `**Page Title**: ${request.pageTitle}\n**Host URL**: ${request.pageHost}`,
           imageUrl: imgLink,
